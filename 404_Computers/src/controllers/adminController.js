@@ -420,8 +420,9 @@ module.exports = {
           let {
             name,
             price,
-            discount,
             description,
+            color,
+            stock,
             product_Category,
             product_Subcategory,
           } = req.body;
@@ -430,7 +431,8 @@ module.exports = {
             name,
             price,
             finalPrice: +req.body.price,
-            color: "Blanco",
+            color,
+            stock,
             discount: +req.body.discount ? discount : 0,
             description,
             product_Category,
@@ -489,9 +491,52 @@ module.exports = {
         const categoriesData = Category.findAll()
         const subCategoriesData = Subcategory.findAll()
 
-        Promise.all([productToEdit, categoriesData, subCategoriesData])
-        .then( ([productToEdit, categoriesData, subCategoriesData]) => {
+        let sub1,sub2,sub3,sub4;
+
+        for (let i = 0; i < 4; i++) {
+            switch(i)
+            {
+                case 0:
+                    sub1 = Subcategory.findAll({
+                        where : {
+                            category_Id : i+1
+                        }
+                    })
+                    break;
+                case 1:
+                    sub2 = Subcategory.findAll({
+                        where : {
+                            category_Id : i+1
+                        }
+                    })
+                    break;
+                case 2:
+                    sub3 = Subcategory.findAll({
+                        where : {
+                            category_Id : i+1
+                        }
+                    })
+                    break;
+                case 3:
+                    sub4 = Subcategory.findAll({
+                        where : {
+                            category_Id : i+1
+                        }
+                    })
+                    break;
+            }
+        }
+
+        Promise.all([productToEdit, categoriesData, subCategoriesData,sub1,sub2,sub3,sub4])
+        .then( ([productToEdit, categoriesData, subCategoriesData,sub1,sub2,sub3,sub4]) => {
+
+            console.log("Cantidad de Categorias : "+categoriesData.length);
+            
             res.render('admin/adminEditProduct',  {
+                sub1,
+                sub2,
+                sub3,
+                sub4,
                 productToEdit,
                 categoriesData,
                 subCategoriesData,

@@ -20,4 +20,10 @@ module.exports = [
     .withMessage('Debe ingresar un precio.')
     .isNumeric()
     .withMessage("Debe ingresar un precio en numeros"),
+
+    check('stock')
+    .notEmpty()
+    .withMessage('Debe ingresar un stock.')
+    .isNumeric()
+    .withMessage("Debe ingresar el stock en numeros"),
 ]

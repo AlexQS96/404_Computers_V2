@@ -2,16 +2,21 @@
             /* MENU DESPLEGABLE */
 /* ************************************ */
 
+.icons_Slider_Menu{
+    margin-right: 10px;
+}
+
 .perfil-usuario .menu-desplegable #btn-menu{
     display: none;
 }
 
 .perfil-usuario .menu-desplegable .label-perfil{
     display: block;
-    width: 100px;
-    padding: 10px;
-    text-align: center;
-
+    width: 240px;
+    padding: 8px 20px 8px 20px;
+    position: absolute;
+    text-indent: 10px;
+    background: #ffffff87;
 }
 
 .perfil-usuario .menu-desplegable .label-perfil:hover{
@@ -20,7 +25,7 @@
 .perfil-usuario .menu-desplegable .menu-usuario {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 0px 20px 20px;
     justify-content: center;
     margin-left: -70%;  
     transition: all 1s; 
@@ -33,20 +38,23 @@
 
 }
 .perfil-usuario .menu-desplegable .menu-usuario li  {
-    padding: 20px;
-
+    padding: 20px 0px 20px 20px;
+    border-left: 2px solid transparent;
+    transition: all .3s;
 }
 
 .perfil-usuario .menu-desplegable .menu-usuario li:hover{
-    border-left: 1px solid #b035c6;
+    border-left: 2px solid #b035c6;
     cursor: pointer;
-    height: 11vh;
-    background-color: #f6e5f9;
-    width: 200px;
-    
+    background-color: #fdf0ff;
+    border-radius: 0.2rem 0 0 0.2rem;
+    text-indent: 5px;
 }
 #btn-menu:checked ~  .menu-usuario {
-    margin: 0;
+    margin: 40px 0 0 0;
+    border: 1px solid violet;
+    border-radius: 0 1rem 1rem 0;
+    background: #ffffff87;
 }
 
 /* ************************************ */
@@ -65,7 +73,7 @@
 .perfil-usuario .main-conteiner-pefil{
     display: flex;
     flex-direction: column;
-    margin: 0 auto 30px auto;
+    margin: 30px auto;
     width: 90%;
     background-color: #f9f9f9a9;
     padding: 20px;

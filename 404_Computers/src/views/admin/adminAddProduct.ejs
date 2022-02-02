@@ -14,50 +14,88 @@
             <form action="/admin/agregar-producto/" method="POST" class="admin_Grid AdminContent" enctype="multipart/form-data">
                 
                 <div class="contenedor">
-                    
+                    <div class="grid_add_title">
+                        <p>Agregar Producto</p>
+                    </div>
+
                     <div class="seleccionar">
-                        <div class="cat1admin">
-                            <select name="product_Category" id="inputCategoryProduct" class="input-select">
-                                <% categoriesData.forEach(catg => { %>
-                                    <option value="<%= catg.id %>"><%= catg.category_Name %></option>
-                                <% }) %>
-                            </select>
-                            <% if (locals.errors && errors.product_Category) { %>
-                                <small class="error-message"><%= errors.product_Category.msg %> </small>
-                            <% } %>
-                            <select name="product_Subcategory" id="inputSubCategoryProduct" class="input-select">
-                                <% subCategoriesData.forEach(scatg => { %>
-                                    <option value="<%= scatg.id %>"><%= scatg.subcategory_Name %></option>
-                                <% }) %>
-                            </select>
-                            <% if (locals.errors && errors.product_Subcategory) { %>
-                                <small class="error-message"><%= errors.product_Subcategory.msg %> </small>
-                            <% } %>
-                        </div>
-            
-                        <div class="cat2admin">
-                            <input type="text" name="name" placeholder="Nombre del Producto" class="input-select">
-                            <% if (locals.errors && errors.name) { %>
-                                <small class="error-message"><%= errors.name.msg %> </small>
-                            <% } %>
+
+                        <div class="col1AP">
+                            <div class="addInputBox">
+                                <label for="name">Nombre del Producto</label>
+                                <input type="text" name="name" id="name" placeholder="Nombre del Producto" class="input-select">
+                                <% if (locals.errors && errors.name) { %>
+                                    <small class="error-message"><%= errors.name.msg %> </small>
+                                <% } %>
+                            </div>
     
-                            <input type="number" name="discount" placeholder="Descuento" value="0" class="input-select">
+                            <div class="addInputBox">
+                                <label for="price">Precio</label>
+                                <input type="number" required placeholder="Ingrese el Precio" name="price" id="price" class="input-select" >
+                                <% if (locals.errors && errors.price) { %>
+                                    <small class="error-message"><%= errors.price.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
+
+                        <div class="col2AP">
+                            <div class="addInputBox">
+                                <label for="inputCategoryProduct">Categoria</label>
+                                <select name="product_Category" id="inputCategoryProduct" class="input-select">
+                                    <% categoriesData.forEach(catg => { %>
+                                        <option value="<%= catg.id %>"><%= catg.category_Name %></option>
+                                    <% }) %>
+                                </select>
+                                <% if (locals.errors && errors.product_Category) { %>
+                                    <small class="error-message"><%= errors.product_Category.msg %> </small>
+                                <% } %>
+                            </div>
+                            
+                            <div class="addInputBox">
+                                <label for="inputSubCategoryProduct">Subcategoria</label>
+                                <select name="product_Subcategory" id="inputSubCategoryProduct" class="input-select">
+                                    <% subCategoriesData.forEach(scatg => { %>
+                                        <option value="<%= scatg.id %>"><%= scatg.subcategory_Name %></option>
+                                    <% }) %>
+                                </select>
+                                <% if (locals.errors && errors.product_Subcategory) { %>
+                                    <small class="error-message"><%= errors.product_Subcategory.msg %> </small>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="col3AP">
+                            <div class="addInputBox">
+                                <label for="inputColorProduct">Color</label>
+                                <select name="color" id="inputColorProduct" class="input-select">
+                                    <option value="Blanco">Blanco</option>
+                                    <option value="Negro">Negro</option>
+                                    <option value="Gris">Gris</option>
+                                    <option value="Rojo">Rojo</option>
+                                    <option value="Azul">Azul</option>
+                                    <option value="Amarillo">Amarillo</option>
+                                    <option value="Rosa">Rosa</option>
+                                    <option value="Verde">Verde</option>
+                                    <option value="Naranja">Naranja</option>
+                                    <option value="Marron">Marron</option>
+                                    <option value="RGB">RGB</option>
+                                </select>
+                            </div>
+                            
+                            <div class="addInputBox">
+                                <label for="inputStockProduct">Stock</label>
+                                <input class="input-select" type="number" name="stock" id="inputStockProduct">
+                            </div>
+                        </div>
+                        
                     </div>
                 
                 </div>
     
                 <section class="infoProductAdmin">
                     <div class="descripcion-producto">
-                        <h4>Descripcion del Producto</h4>
-                        <textarea name="description" placeholder="Descripcion del Producto" id="mensaje" cols="30" rows="10" ></textarea>
-                    </div>
-                    <div class="precio-admin">
-                        <label for="precio">Precio $</label>
-                        <input type="number" required placeholder="Ingrese el Precio" name="price" class="input-select" >
-                        <% if (locals.errors && errors.price) { %>
-                            <small class="error-message"><%= errors.price.msg %> </small>
-                        <% } %>
+                        <label style="text-align: left; display: flex;" for="mensaje">Descripcion del Producto</label>
+                        <textarea name="description" placeholder="Describa el Producto" id="mensaje" cols="30" rows="10" ></textarea>
                     </div>
                 </section>
     
@@ -77,7 +115,7 @@
                     </div>
                     <p id="errorImage"></p>
                 </section>
-                <button type="submit" class="finalizar">Finalizar</button>
+                <button type="submit" class="finalizar">Guardar Producto</button>
             </form>
         </section>        
     </main>

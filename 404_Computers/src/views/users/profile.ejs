@@ -8,21 +8,31 @@
     <main class="perfil-usuario">
         <div class="menu-desplegable">
             <input type="checkbox" name="" id="btn-menu">
-            <label for="btn-menu" class="label-perfil"><i class="fas fa-bars"></i></label>
+            <label for="btn-menu" class="label-perfil"><i class="fas fa-bars" style="margin-right: 15px;"></i>Mi Cuenta</label>
             
             <nav class="menu-usuario">
-              <p><!-- aca se muestra lo q se seleccione por ejemplo -->Mis datos</p>
               <ul>
-                  <li><i class="fas fa-shopping-bag"></i> Mis Compras</li>
-                  <li><i class="fas fa-store"></i> Ventas</li>
-                  <li><a href="/editar-perfil"><i class="fas fa-cog"></i> Configuraciones</a></li>
-                  <li>mas</li>
+                <li>
+                  <a href="/perfil/<%= session.user.id %>"><i class="icons_Slider_Menu fa fa-user" aria-hidden="true"></i>Ver Perfil</a>
+                </li>
+                <li>
+                  <a href="/mis-compras"><i class="icons_Slider_Menu fa fa-shopping-bag"></i>Mis Compras</a>
+                </li>
+                <li>
+                  <a href="/favoritos"><i class="icons_Slider_Menu fa fa-heart"></i>Mis favoritos</a>
+                </li>
+                <li>
+                  <a href="/historial"><i class="icons_Slider_Menu fa fa-history"></i>Mi Historial</a>
+                </li>
+                <li>
+                  <a href="/editar-perfil"><i class="icons_Slider_Menu fas fa-cog" aria-hidden="true"></i>Editar Mi Perfil</a>
+                </li>
               </ul>
           </nav>
         </div>
 
         <div class="main-conteiner-pefil">
-          <img class="profilePicP" src="/images/users/<%=user.image %>" alt="<%=user.image %>">
+          <img class="profilePicP" src="/images/users/<%=users.image %>" alt="<%=users.image %>">
           <h2>Mis Datos</h3><!-- primer encabezado que se ve en la vista -->
 
           <div class="subtitulo-mis-datos">
